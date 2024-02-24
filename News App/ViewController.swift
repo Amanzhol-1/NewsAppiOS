@@ -17,6 +17,11 @@ class ViewController: NewsListViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
+        let techCrunchButton = UIBarButtonItem(title: "TechCrunch", style: .plain, target: self, action: #selector(changeNewsSourceToTechCrunch))
+        let wsjButton = UIBarButtonItem(title: "WSJ", style: .plain, target: self, action: #selector(changeNewsSourceToWSJ))
+        let businessButton = UIBarButtonItem(title: "business USA", style: .plain, target: self, action: #selector(changeNewsSourceToBusinessUSA))
+        navigationItem.rightBarButtonItems = [techCrunchButton, wsjButton, businessButton]
+        
         let refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem:
                 .refresh, target: self, action: #selector(reloadNews))
            navigationItem.leftBarButtonItem = refreshBarButtonItem
@@ -78,5 +83,18 @@ class ViewController: NewsListViewController, UISearchBarDelegate {
         searchVC.isActive = false
     }
     
+    @objc func changeNewsSourceToTechCrunch() {
+        APICaller.shared.updateNewsSource(to: APICaller.Constants.techCrunchURL!)
+        reloadNews()
+    }
+
+    @objc func changeNewsSourceToWSJ() {
+        APICaller.shared.updateNewsSource(to: APICaller.Constants.byWSJInURL!)
+        reloadNews()
+    }
     
+    @objc func changeNewsSourceToBusinessUSA() {
+        APICaller.shared.updateNewsSource(to: APICaller.Constants.topHeadLinesURL!)
+        reloadNews()
+    }
 }

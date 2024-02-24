@@ -16,9 +16,12 @@ final class APICaller{
         static let byWSJInURL = URL(string: "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=0e6e74971bd4454f946cd2fde0d3e80b")
         static let searchUrlString = "https://newsapi.org/v2/everything?sortBy=popularity&apiKey=0e6e74971bd4454f946cd2fde0d3e80b&q="
             
-        static var current = byWSJInURL
+        static var current = topHeadLinesURL
     }
-
+    
+    func updateNewsSource(to source: URL) {
+        Constants.current = source
+    }
     
     private init(){}
     
