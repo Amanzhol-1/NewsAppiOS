@@ -21,5 +21,11 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Core Sans G 45 Regular.ttf</string>
+		<string>URWGeometricMedium.otf</string>
+		<string>proximanova_regular.otf</string>
+	</array>
 </dict>
 </plist>
