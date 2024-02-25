@@ -29,7 +29,7 @@ final class APICaller{
         guard let url = Constants.current else {
             return
         }
-
+        
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 completion(.failure(error))

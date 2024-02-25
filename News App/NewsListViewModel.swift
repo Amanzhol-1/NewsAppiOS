@@ -41,4 +41,24 @@ class NewsListViewModel{
             }
         })
     }
+    
+    public func searchArticles(query: String, onCompletion: @escaping ([Article: Bool]) -> Void) {
+        APICaller.shared.search(with: query, completion: { networkResult in
+            let favorites = self.getFavoriteArticles()
+
+            switch networkResult {
+            case .success(let articles):
+                var articlesToSavedState: [Article: Bool] = [:]
+                for article in articles {
+                    let isFavorite = favorites.contains { $0.url == article.url }
+                    articlesToSavedState[article] = isFavorite
+                }
+                onCompletion(articlesToSavedState)
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
+    }
+
 }

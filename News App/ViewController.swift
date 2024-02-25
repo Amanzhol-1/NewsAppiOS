@@ -63,13 +63,13 @@ class ViewController: NewsListViewController, UISearchBarDelegate {
         guard let text = searchBar.text, !text.isEmpty else {
             return
         }
-        NewsListViewModel.shared.getArticlesOnline { data in
+        NewsListViewModel.shared.searchArticles(query: text) { data in
             self.articles = Array(data.keys)
             self.viewModels = self.articles.compactMap({
                 NewsTableViewCellViewModel(
-
                     article: $0,
-                    isSaved: data[$0] ?? false                )
+                    isSaved: data[$0] ?? false
+                )
             })
             DispatchQueue.main.async {
                 self.tableView.reloadData()
