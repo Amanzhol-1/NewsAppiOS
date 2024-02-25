@@ -55,6 +55,7 @@ public class DBController{
                 for entry in existingEntry{
                     persistentContainer.viewContext.delete(entry)
                 }
+                saveContext()
                 return false
             }
         }catch{
