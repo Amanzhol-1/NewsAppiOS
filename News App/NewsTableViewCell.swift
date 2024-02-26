@@ -103,14 +103,16 @@ class NewsTableViewCell: UITableViewCell {
         super.prepareForReuse()
         newsTitleLabel.text = nil
         newsImageView.image = nil
+        newsSavedView.image = UIImage(systemName: "bookmark")
+        newsSavedView.tintColor = .blue
     }
     
     @objc func imageTapped(){
         if let data = article{
             let isSaved = DBController.shared.saveOrDeleteArticle(article: data)
             if isSaved{
- newsSavedView.image = UIImage(systemName: "bookmark.fill")
- newsSavedView.tintColor = .blue
+                newsSavedView.image = UIImage(systemName: "bookmark.fill")
+                newsSavedView.tintColor = .blue
             }else{
                 newsSavedView.image = UIImage(systemName: "bookmark")
                 newsSavedView.tintColor = .blue
