@@ -46,10 +46,12 @@ class NewsTableViewCell: UITableViewCell {
     }()
     
     private let newsSavedView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "bookmark.fill"))
+        let imageView = UIImageView(image: UIImage(systemName: "bookmark"))
         
         return imageView
     }()
+    
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -107,9 +109,12 @@ class NewsTableViewCell: UITableViewCell {
         if let data = article{
             let isSaved = DBController.shared.saveOrDeleteArticle(article: data)
             if isSaved{
-                newsSavedView.tintColor = .orange
+ newsSavedView.image = UIImage(systemName: "bookmark.fill")
+ newsSavedView.tintColor = .blue
             }else{
+                newsSavedView.image = UIImage(systemName: "bookmark")
                 newsSavedView.tintColor = .blue
+           
             }
         }
     }
@@ -119,7 +124,8 @@ class NewsTableViewCell: UITableViewCell {
         article = viewModel.article
         
         if viewModel.isSaved{
-            newsSavedView.tintColor = .orange
+            newsSavedView.image = UIImage(systemName: "bookmark.fill")
+            newsSavedView.tintColor = .blue
         }
 
         // Image
@@ -141,3 +147,142 @@ class NewsTableViewCell: UITableViewCell {
 
 }
 
+/*import UIKit
+
+class NewsTableViewCellViewModel {
+    let article: Article
+    var isSaved: Bool
+    var imageData: Data? = nil
+
+    init(article: Article, isSaved: Bool) {
+        self.article = article
+        self.isSaved = isSaved
+    }
+}
+
+class NewsTableViewCell: UITableViewCell {
+    static let identifier = "NewsTableViewCell"
+
+    private var viewModel: NewsTableViewCellViewModel?
+    
+    private let newsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Proxima Nova", size: 17)
+        return label
+    }()
+
+    private let newsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 6
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        imageView.backgroundColor = .secondarySystemBackground
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private let newsSavedView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "bookmark"))
+        imageView.tintColor = .blue
+        return imageView
+    }()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupSubviews()
+        setupGestures()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupSubviews() {
+        contentView.addSubview(newsTitleLabel)
+        contentView.addSubview(newsImageView)
+        contentView.addSubview(newsSavedView)
+        
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 8
+        contentView.layer.masksToBounds = true
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0).cgColor
+    }
+
+    private func setupGestures() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        newsSavedView.isUserInteractionEnabled = true
+        newsSavedView.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20))
+        
+        newsTitleLabel.frame = CGRect(
+            x: 10,
+            y: 10,
+            width: contentView.frame.size.width - 170,
+            height: 70
+        )
+        
+        newsSavedView.frame = CGRect(x: 10, y: 80, width: 30, height: 30)
+        
+        newsImageView.frame = CGRect(
+            x: contentView.frame.size.width - 120,
+            y: 12,
+            width: 108,
+            height: contentView.frame.size.height - 25
+        )
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newsTitleLabel.text = nil
+        newsImageView.image = nil
+        newsSavedView.image = UIImage(systemName: "bookmark")
+        newsSavedView.tintColor = .black
+    }
+    
+    @objc func imageTapped() {
+        guard let viewModel = viewModel else { return }
+        viewModel.isSaved.toggle()
+        if viewModel.isSaved {
+            newsSavedView.image = UIImage(systemName: "bookmark.fill")
+            newsSavedView.tintColor = .blue
+        } else {
+            newsSavedView.image = UIImage(systemName: "bookmark")
+            newsSavedView.tintColor = .blue
+        }
+    }
+
+    func configure(with viewModel: NewsTableViewCellViewModel) {
+        self.viewModel = viewModel
+        newsTitleLabel.text = viewModel.article.title
+
+        if viewModel.isSaved {
+            newsSavedView.image = UIImage(systemName: "bookmark.fill")
+            newsSavedView.tintColor = .blue
+        } else {
+            newsSavedView.image = UIImage(systemName: "bookmark")
+            newsSavedView.tintColor = .blue
+        }
+
+        if let imageData = viewModel.imageData {
+            newsImageView.image = UIImage(data: imageData)
+        } else if let urlString = viewModel.article.urlToImage,
+            let url = URL(string: urlString) {
+            URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+                guard let data = data, error == nil else { return }
+                viewModel.imageData = data
+                DispatchQueue.main.async {
+                    self?.newsImageView.image = UIImage(data: data)
+                }
+            }.resume()
+        }
+    }
+}
+
+*/

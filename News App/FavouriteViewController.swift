@@ -13,7 +13,8 @@ class FavouriteViewController: NewsListViewController {
     override func configureUI(){
         super.configureUI()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: self, action: #selector(super.reloadNews))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem:
+                .refresh, target: self, action: #selector(super.reloadNews))
     }
 
 
