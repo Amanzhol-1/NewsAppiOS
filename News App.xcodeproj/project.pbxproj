@@ -72,6 +72,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		237B16322B8E4DF000554146 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				237B16362B8E4E2D00554146 /* db */,
+				237B16352B8E4E2200554146 /* network */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		237B16332B8E4DF700554146 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				237B16382B8E4E5600554146 /* favorite */,
+				237B16372B8E4E4100554146 /* news */,
+				2397B2672B8A4D5700C2A7C3 /* basic */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		237B16342B8E4DFD00554146 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				237B16392B8E4E5D00554146 /* news */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		237B16352B8E4E2200554146 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				4368172F2B874C93001A9E52 /* APICaller.swift */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		237B16362B8E4E2D00554146 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				2397B23F2B8909C200C2A7C3 /* NewsAppDB.xcdatamodeld */,
+				2397B2352B8905FF00C2A7C3 /* DBController.swift */,
+			);
+			path = db;
+			sourceTree = "<group>";
+		};
+		237B16372B8E4E4100554146 /* news */ = {
+			isa = PBXGroup;
+			children = (
+				237B163A2B8E4E8F00554146 /* controllers */,
+				2397B2682B8A556000C2A7C3 /* NewsListViewModel.swift */,
+			);
+			path = news;
+			sourceTree = "<group>";
+		};
+		237B16382B8E4E5600554146 /* favorite */ = {
+			isa = PBXGroup;
+			children = (
+				237B163B2B8E4E9600554146 /* controllers */,
+			);
+			path = favorite;
+			sourceTree = "<group>";
+		};
+		237B16392B8E4E5D00554146 /* news */ = {
+			isa = PBXGroup;
+			children = (
+				43E1B5B22B877DE5000FE15F /* NewsTableViewCell.swift */,
+			);
+			path = news;
+			sourceTree = "<group>";
+		};
+		237B163A2B8E4E8F00554146 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4368171F2B874AB9001A9E52 /* ViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		237B163B2B8E4E9600554146 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E83930172B88A233008F93F6 /* FavouriteViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
 		2397B2272B89035800C2A7C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +168,7 @@
 		2397B2672B8A4D5700C2A7C3 /* basic */ = {
 			isa = PBXGroup;
 			children = (
+				2397B2652B8919E300C2A7C3 /* FetchDataProtocol.swift */,
 				2397B2632B89199B00C2A7C3 /* NewsListViewController.swift */,
 			);
 			path = basic;
@@ -108,29 +194,23 @@
 		4368171A2B874AB9001A9E52 /* News App */ = {
 			isa = PBXGroup;
 			children = (
-				2397B2672B8A4D5700C2A7C3 /* basic */,
+				237B16342B8E4DFD00554146 /* view */,
+				237B16332B8E4DF700554146 /* domain */,
+				237B16322B8E4DF000554146 /* model */,
 				4368171B2B874AB9001A9E52 /* AppDelegate.swift */,
 				4368171D2B874AB9001A9E52 /* SceneDelegate.swift */,
-				4368171F2B874AB9001A9E52 /* ViewController.swift */,
 				436817212B874AB9001A9E52 /* Main.storyboard */,
 				436817242B874ABB001A9E52 /* Assets.xcassets */,
 				436817262B874ABB001A9E52 /* LaunchScreen.storyboard */,
 				436817292B874ABB001A9E52 /* Info.plist */,
-				4368172F2B874C93001A9E52 /* APICaller.swift */,
-				43E1B5B22B877DE5000FE15F /* NewsTableViewCell.swift */,
 				E83930112B889507008F93F6 /* SecondController.swift */,
 				E83930152B88A179008F93F6 /* UserTabBarViewController.swift */,
-				E83930172B88A233008F93F6 /* FavouriteViewController.swift */,
-				2397B2352B8905FF00C2A7C3 /* DBController.swift */,
-				2397B23F2B8909C200C2A7C3 /* NewsAppDB.xcdatamodeld */,
-				2397B2652B8919E300C2A7C3 /* FetchDataProtocol.swift */,
 				E8ED18852B8A072600EEEC7D /* ProfileViewController.swift */,
 				E8730A2E2B8E341300EAD26F /* EditProfileViewController.swift */,
 				E8ED18872B8A076200EEEC7D /* LoginViewController.swift */,
 				E8ED18892B8A078200EEEC7D /* JoinViewController.swift */,
 				E8730A2C2B8E321200EAD26F /* RegistrationViewController.swift */,
 				E8ED188B2B8A079700EEEC7D /* HeadlinesViewController.swift */,
-				2397B2682B8A556000C2A7C3 /* NewsListViewModel.swift */,
 			);
 			path = "News App";
 			sourceTree = "<group>";
