@@ -24,6 +24,8 @@
 		E83930122B889507008F93F6 /* SecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83930112B889507008F93F6 /* SecondController.swift */; };
 		E83930162B88A179008F93F6 /* UserTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83930152B88A179008F93F6 /* UserTabBarViewController.swift */; };
 		E83930182B88A233008F93F6 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83930172B88A233008F93F6 /* FavouriteViewController.swift */; };
+		E8730A2D2B8E321200EAD26F /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8730A2C2B8E321200EAD26F /* RegistrationViewController.swift */; };
+		E8730A2F2B8E341300EAD26F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8730A2E2B8E341300EAD26F /* EditProfileViewController.swift */; };
 		E8ED18862B8A072600EEEC7D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED18852B8A072600EEEC7D /* ProfileViewController.swift */; };
 		E8ED18882B8A076200EEEC7D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED18872B8A076200EEEC7D /* LoginViewController.swift */; };
 		E8ED188A2B8A078200EEEC7D /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED18892B8A078200EEEC7D /* JoinViewController.swift */; };
@@ -50,6 +52,8 @@
 		E83930112B889507008F93F6 /* SecondController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondController.swift; sourceTree = "<group>"; };
 		E83930152B88A179008F93F6 /* UserTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabBarViewController.swift; sourceTree = "<group>"; };
 		E83930172B88A233008F93F6 /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		E8730A2C2B8E321200EAD26F /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		E8730A2E2B8E341300EAD26F /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		E8ED18852B8A072600EEEC7D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E8ED18872B8A076200EEEC7D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E8ED18892B8A078200EEEC7D /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
@@ -121,8 +125,10 @@
 				2397B23F2B8909C200C2A7C3 /* NewsAppDB.xcdatamodeld */,
 				2397B2652B8919E300C2A7C3 /* FetchDataProtocol.swift */,
 				E8ED18852B8A072600EEEC7D /* ProfileViewController.swift */,
+				E8730A2E2B8E341300EAD26F /* EditProfileViewController.swift */,
 				E8ED18872B8A076200EEEC7D /* LoginViewController.swift */,
 				E8ED18892B8A078200EEEC7D /* JoinViewController.swift */,
+				E8730A2C2B8E321200EAD26F /* RegistrationViewController.swift */,
 				E8ED188B2B8A079700EEEC7D /* HeadlinesViewController.swift */,
 				2397B2682B8A556000C2A7C3 /* NewsListViewModel.swift */,
 			);
@@ -207,11 +213,13 @@
 				E8ED188C2B8A079700EEEC7D /* HeadlinesViewController.swift in Sources */,
 				2397B2692B8A556000C2A7C3 /* NewsListViewModel.swift in Sources */,
 				43E1B5B32B877DE5000FE15F /* NewsTableViewCell.swift in Sources */,
+				E8730A2F2B8E341300EAD26F /* EditProfileViewController.swift in Sources */,
 				2397B2662B8919E300C2A7C3 /* FetchDataProtocol.swift in Sources */,
 				E83930182B88A233008F93F6 /* FavouriteViewController.swift in Sources */,
 				2397B2362B8905FF00C2A7C3 /* DBController.swift in Sources */,
 				2397B2642B89199B00C2A7C3 /* NewsListViewController.swift in Sources */,
 				E83930122B889507008F93F6 /* SecondController.swift in Sources */,
+				E8730A2D2B8E321200EAD26F /* RegistrationViewController.swift in Sources */,
 				2397B2412B8909C200C2A7C3 /* NewsAppDB.xcdatamodeld in Sources */,
 				E8ED18862B8A072600EEEC7D /* ProfileViewController.swift in Sources */,
 				4368171E2B874AB9001A9E52 /* SceneDelegate.swift in Sources */,

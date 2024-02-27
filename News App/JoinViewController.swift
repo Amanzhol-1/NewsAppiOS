@@ -1,57 +1,96 @@
-//
-//  JoinViewController.swift
-//  News App
-//
-//  Created by Сырлыбай Рамазан on 24.02.2024.
-//
-
 import UIKit
 
 class JoinViewController: UIViewController {
 
+    lazy var usernameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Username"
+        textField.borderStyle = .roundedRect
+        textField.backgroundColor = .white
+        return textField
+    }()
 
-    
-    lazy var button : UIButton = {
+    lazy var passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Password"
+        textField.isSecureTextEntry = true
+        textField.borderStyle = .roundedRect
+        textField.backgroundColor = .white
+        return textField
+    }()
+
+    lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Tap me", for: .normal)
+        button.setTitle("Login", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(didTapBotton), for: .touchUpInside)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
         return button
     }()
-    
-    func configureUI(){
-        view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
+
+    lazy var registerButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Register", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemGreen
+        button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
+        return button
+    }()
+
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Back", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemGray
+        button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
+        return button
+    }()
+
+    func configureUI() {
+        view.backgroundColor = .systemBackground
+
+        let stackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField, loginButton, registerButton])
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            button.heightAnchor.constraint(equalToConstant: 80),
-            button.widthAnchor.constraint(equalToConstant: 300)
-            
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: 250)
         ])
+
+        // Customize text fields
+        [usernameTextField, passwordTextField].forEach {
+            $0.layer.borderWidth = 1
+            $0.layer.borderColor = UIColor.systemGray.cgColor
+            $0.layer.cornerRadius = 8
+            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        }
     }
-    
-    @objc func didTapBotton(){
-//        self.navigationController?.pushViewController(SecondController(), animated: true)
-        let userTabBar = LoginViewController()
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc: UserTabBarViewController())
+
+    @objc func didTapLogin() {
+        let userTabBar = UserTabBarViewController()
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc: userTabBar)
     }
-    
+
+    @objc func didTapRegister() {
+        let registrationVC = RegistrationViewController()
+        navigationController?.pushViewController(registrationVC, animated: true)
+    }
+
+    @objc func didTapBack() {
+        navigationController?.popViewController(animated: true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
