@@ -5,42 +5,54 @@
 //  Created by Молтабаров Аманжол on 22.02.2024.
 //
 
+
+
 import UIKit
 import SafariServices
 
 class ViewController: NewsListViewController, UISearchBarDelegate {
     
-        
     private let searchVC = UISearchController(searchResultsController: nil)
+ 
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        title = "News"
+    }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
-        let techCrunchButton = UIBarButtonItem(title: "TechCrunch", style: .plain, target: self, action: #selector(changeNewsSourceToTechCrunch))
-        let wsjButton = UIBarButtonItem(title: "WSJ", style: .plain, target: self, action: #selector(changeNewsSourceToWSJ))
-        let businessButton = UIBarButtonItem(title: "business USA", style: .plain, target: self, action: #selector(changeNewsSourceToBusinessUSA))
-        navigationItem.rightBarButtonItems = [techCrunchButton, wsjButton, businessButton]
-        
+        createSearchBar()
+        createCategoryBar()
         let refreshBarButtonItem = UIBarButtonItem(barButtonSystemItem:
                 .refresh, target: self, action: #selector(reloadNews))
            navigationItem.leftBarButtonItem = refreshBarButtonItem
-        
+    
         loadData()
-        createSearchBar()
-        
-        self.navigationItem.title = "News"
+ self.navigationItem.title = "News"
+ 
         
         
     }
     
-
+    private func createCategoryBar() {
+        let segmentedControl = UISegmentedControl(items: ["Business USA", "WSJ", "TechCrunch"])
+        segmentedControl.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = 0
+        navigationItem.titleView = segmentedControl
+    }
+    
     private func createSearchBar() {
         navigationItem.searchController = searchVC
         searchVC.searchBar.delegate = self
     }
     
     override func loadData(){
+        super.loadData()
         NewsListViewModel.shared.getArticlesOnline { data in
             self.articles = Array(data.keys)
             self.viewModels = self.articles.compactMap({
@@ -55,9 +67,6 @@ class ViewController: NewsListViewController, UISearchBarDelegate {
             }
         }
     }
-    
-    
-    //Search
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
@@ -83,6 +92,19 @@ class ViewController: NewsListViewController, UISearchBarDelegate {
         searchVC.isActive = false
     }
     
+    @objc func segmentedControlChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            changeNewsSourceToBusinessUSA()
+        case 1:
+            changeNewsSourceToWSJ()
+        case 2:
+            changeNewsSourceToTechCrunch()
+        default:
+            break
+        }
+    }
+    
     @objc func changeNewsSourceToTechCrunch() {
         APICaller.shared.updateNewsSource(to: APICaller.Constants.techCrunchURL!)
         reloadNews()
@@ -98,3 +120,4 @@ class ViewController: NewsListViewController, UISearchBarDelegate {
         reloadNews()
     }
 }
+ 
