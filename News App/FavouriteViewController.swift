@@ -27,6 +27,7 @@ class FavouriteViewController: NewsListViewController {
             )
         })
         DispatchQueue.main.async {
+            
             self.tableView.reloadData()
         }
     }

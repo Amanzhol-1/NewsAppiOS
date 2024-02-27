@@ -7,13 +7,16 @@
 
 import UIKit
 
-class UserTabBarViewController: UITabBarController {
+class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+            super.viewDidLoad()
 
-        configureTabs()
-    }
+            
+            self.delegate = self
+
+            configureTabs()
+        }
     
     private func configureTabs(){
         let vc1 = ViewController()
@@ -25,7 +28,6 @@ class UserTabBarViewController: UITabBarController {
         vc1.title = "Home"
         vc2.tabBarItem.title = "Favourite"
         
-       
         vc4.title = "profile"
         vc4.tabBarItem.image = UIImage(systemName: "person.circle.fill")
         let nav1 = UINavigationController(rootViewController: vc1)
@@ -38,6 +40,21 @@ class UserTabBarViewController: UITabBarController {
         
         setViewControllers([nav1, nav2, nav4], animated: true)
     }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+            if let selectedNav = viewController as? UINavigationController {
+                if let selectedVC = selectedNav.viewControllers.first {
+                    // Определите текущий класс контроллера и вызовите нужную функцию
+                    if selectedVC is ViewController {
+                        // Вызовите функцию для ViewController
+                        (selectedVC as? ViewController)?.reloadNews()
+                    } else if selectedVC is FavouriteViewController {
+                        // Вызовите функцию для FavouriteViewController
+                        (selectedVC as? FavouriteViewController)?.reloadNews()
+                    }
+                }
+            }
+        }
     
 
     /*

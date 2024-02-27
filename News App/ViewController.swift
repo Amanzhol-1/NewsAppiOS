@@ -24,6 +24,7 @@ class ViewController: NewsListViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
+        reloadNews()
         super.viewDidLoad()
         title = "Home"
         createSearchBar()
