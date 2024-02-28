@@ -38,7 +38,7 @@ class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         tabBar.tintColor = .label
         tabBar.backgroundColor = .systemGray
         
-        setViewControllers([nav1, nav2, nav4], animated: true)
+        setViewControllers([nav1, nav2], animated: true)
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
