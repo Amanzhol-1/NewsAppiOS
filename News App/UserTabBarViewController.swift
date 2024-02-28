@@ -45,10 +45,7 @@ class UserTabBarViewController: UITabBarController, UITabBarControllerDelegate {
             if let selectedNav = viewController as? UINavigationController {
                 if let selectedVC = selectedNav.viewControllers.first {
                     // Определите текущий класс контроллера и вызовите нужную функцию
-                    if selectedVC is ViewController {
-                        // Вызовите функцию для ViewController
-                        (selectedVC as? ViewController)?.reloadNews()
-                    } else if selectedVC is FavouriteViewController {
+                    if selectedVC is FavouriteViewController {
                         // Вызовите функцию для FavouriteViewController
                         (selectedVC as? FavouriteViewController)?.reloadNews()
                     }
